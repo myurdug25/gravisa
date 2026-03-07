@@ -4,8 +4,14 @@ config/.env
 .env.local
 .env.*.local
 
-# Veri (isteğe bağlı - yedek alıyorsanız kaldırın)
-# data/*.json
+# Geliştirme / import - sunucuda gerekmez
+*.md
+*.txt
+*.xlsx
+*.py
+1111/
+scripts/
+database/
 
 # IDE / OS
 .idea/
