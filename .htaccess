@@ -1,9 +1,9 @@
 # Gravisa - Production kuralları
-# RewriteBase: Site kökündeyse /, alt dizindeyse /gravisa/ yapın (DEPLOY.md)
+# RewriteBase: Site kökündeyse /, XAMPP'ta localhost/gravisa/ için /gravisa/ yapın (DEPLOY.md)
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /gravisa/
+  RewriteBase /
 
   # Hassas dosya/klasörlere doğrudan erişimi engelle
   RewriteRule ^\.env - [F,L]
