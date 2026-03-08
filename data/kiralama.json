@@ -14,5 +14,24 @@
         "firma": "yok",
         "not": "",
         "created_at": "2026-03-02 12:33:10"
+    },
+    "kiralama_20260308011752_09c54d": {
+        "ad_soyad": "Murat YURDUGÜL",
+        "email": "muratyurdugul10@gmail.com",
+        "telefon": "+90 (505) 049 1879",
+        "lokasyon": "erzurum",
+        "sure": "gunluk",
+        "operator": "operatörlü",
+        "baslangic": "2026-03-18",
+        "bitis": "2026-03-22",
+        "model": "1",
+        "makine_id": "1",
+        "makine_model": "AKSA APM 13,2",
+        "firma": "yok",
+        "not": "d",
+        "created_at": "2026-03-08 01:17:52",
+        "admin_reply": "tamm",
+        "replied_at": "2026-03-08 01:19:06",
+        "reply_email_sent": true
     }
 }

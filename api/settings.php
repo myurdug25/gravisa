@@ -12,6 +12,8 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    header('Pragma: no-cache');
     $all = getSettings();
     // Frontend için sadece gösterim alanları (mail_to gibi dahili alanları da dönebiliriz; frontend kullanmaz)
     $public = [
