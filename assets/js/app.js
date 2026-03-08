@@ -13,8 +13,25 @@
       if (nav.classList.contains('is-open') && !nav.contains(e.target) && !navToggle.contains(e.target)) {
         nav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        var dd = document.querySelector('.nav-dropdown.is-open');
+        if (dd) { dd.classList.remove('is-open'); }
       }
     });
+  }
+
+  // Mobil: Kurumsal dropdown – tıklanınca aç/kapa (sayfaya gitme)
+  var navDropdown = document.querySelector('.nav-dropdown');
+  if (navDropdown) {
+    var dropdownLink = navDropdown.querySelector('a');
+    if (dropdownLink) {
+      dropdownLink.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          navDropdown.classList.toggle('is-open');
+          dropdownLink.setAttribute('aria-expanded', navDropdown.classList.contains('is-open'));
+        }
+      });
+    }
   }
 
   // Hero görsel slider
