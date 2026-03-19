@@ -3,7 +3,8 @@
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /gravisa/
+  # RewriteBase bu dizinin kurulum konumuna göre otomatik hesaplanır.
+  # (localde /gravisa altındaysa /gravisa/, domain root'taysa /)
 
   # Hassas dosya/klasörlere doğrudan erişimi engelle
   RewriteRule ^\.env - [F,L]
