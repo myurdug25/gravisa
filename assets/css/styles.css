@@ -96,7 +96,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 86px;
+  min-height: 72px;
 }
 
 .logo {
@@ -1913,7 +1913,6 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .header-inner { min-height: 72px; }
   .logo {
     width: 64px;
     height: 64px;
