@@ -56,7 +56,7 @@
         if (filterModelYil) {
           filterModelYil.innerHTML = '<option value=\"\">Tümü</option>';
         }
-        populateFilters();
+        if (filterTip && filterFirma && filterModelYil) populateFilters();
         renderResults();
       })
       .catch(function() {
@@ -70,6 +70,7 @@
   }
 
   function populateFilters() {
+    if (!filterTip || !filterFirma || !filterModelYil) return;
     var tipler = [...new Set(window.makineler.map(function(m) { return m.tip; }))].sort();
     var firmalar = [...new Set(window.makineler.map(function(m) { return m.firma; }))].sort();
     var modelYillari = [...new Set(window.makineler.map(function(m) { return m.modelYil; }))].sort(function(a, b) { return b - a; });
@@ -149,7 +150,11 @@
     article.className = 'machine-card';
     var imgSrc = safeImgSrc(m.img);
     article.innerHTML =
-      '<div class="machine-card-image"><img src="' + escapeHtml(imgSrc) + '" alt="' + escapeHtml(m.tipModel) + '" /></div>' +
+      '<div class="machine-card-image">' +
+      '<img src="' + escapeHtml(imgSrc) + '" alt="' + escapeHtml(m.tipModel) + '" ' +
+      'onerror="this.style.display=\\'none\\';var f=this.parentElement.querySelector(\\'.machine-card-image-fallback\\');if(f)f.style.display=\\'flex\\';" />' +
+      '<span class="machine-card-image-fallback" style="display:none;">🖼️</span>' +
+      '</div>' +
       '<div class="machine-card-body">' +
         '<div class="machine-card-badge">' + escapeHtml(m.tip) + '</div>' +
         '<h3 class="machine-card-title">' + escapeHtml(m.firma) + ' ' + escapeHtml(m.tipModel) + '</h3>' +
@@ -238,7 +243,7 @@
 
   // İlk yükleme - API'den makineleri çek, sonra filtreleri doldur ve listele
   loadMachinesFromAPI().then(function() {
-    populateFilters();
-    renderResults();
+  populateFilters();
+  renderResults();
   });
 })();
