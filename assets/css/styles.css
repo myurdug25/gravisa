@@ -886,14 +886,14 @@ a:hover {
   gap: 24px;
 }
 .saha-grid .machine-card-image {
-  aspect-ratio: unset;
+  aspect-ratio: 16/10;
   height: auto;
 }
 .saha-grid .machine-card-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 @media (max-width: 900px) {
