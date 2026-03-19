@@ -882,7 +882,7 @@ a:hover {
 /* Saha fotoğrafları: 3 sütun, her resim kendi oranında (boşluk yok) */
 .saha-grid {
   grid-template-columns: repeat(3, 1fr);
-  align-items: start;
+  align-items: stretch;
   gap: 24px;
 }
 .saha-grid .machine-card-image {
@@ -895,6 +895,18 @@ a:hover {
   display: block;
   object-fit: cover;
   object-position: center;
+}
+
+/* Saha kartları: aynı hizada görünmesi için içerik alanını sabitle */
+.saha-grid .machine-card-body {
+  min-height: 128px;
+}
+.saha-grid .machine-card-title {
+  min-height: 2.7em;
+}
+.saha-grid .machine-card-meta {
+  min-height: 1.3em;
+  margin-bottom: 0;
 }
 @media (max-width: 900px) {
   .saha-grid {
@@ -1925,8 +1937,6 @@ a:hover {
   .logo {
     width: 64px;
     height: 64px;
-    /* Mobilde logo alanı dokunmayı başka menü öğelerine kaydırmasın diye devre dışı. */
-    pointer-events: none;
   }
 
   .nav-toggle { display: flex; }
@@ -2164,8 +2174,15 @@ a:hover {
     right: 20px;
   }
   .whatsapp-float svg { width: 24px; height: 24px; }
-  .machine-card-actions { flex-direction: column; }
+  .machine-card-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin-top: auto;
+  }
   .machine-card-actions .btn { min-width: 0; width: 100%; }
+  .machine-card-actions a:nth-child(3) { grid-column: 1 / -1; }
   .banner-card-body { padding: 18px 16px 22px; }
 }
 
