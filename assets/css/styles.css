@@ -102,6 +102,7 @@ a:hover {
 .logo {
   position: relative;
   z-index: 0; /* pseudo elementlerin görünmesi için stacking context */
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +117,7 @@ a:hover {
   text-decoration: none;
 
   /* Şekilli dairesel logo */
-  background: url('../../images/IMG_9059.JPG.jpeg') center/contain no-repeat;
+  background: url('/images/IMG_9059.JPG.jpeg') center/contain no-repeat;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
   transition: box-shadow 0.25s ease;
   flex: 0 0 auto;
@@ -133,7 +134,7 @@ a:hover {
     var(--color-primary) 70%,
     #ffb200 100%
   );
-  z-index: 0;
+  z-index: -1; /* Halkayı görselin arkasına al */
   opacity: 0.95;
   pointer-events: none;
 }
@@ -143,7 +144,7 @@ a:hover {
   inset: 2px;
   border-radius: inherit;
   background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.32), rgba(0, 0, 0, 0.22));
-  z-index: 1;
+  z-index: 0; /* İç parlaklık */
   pointer-events: none;
 }
 .logo:hover {
