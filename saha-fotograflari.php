@@ -72,10 +72,6 @@ if (file_exists($sahaFile)) {
           <?php foreach ($sahaPhotos as $photo): ?>
           <?php
             $rawImg = safeImgSrc($photo['img'] ?? '');
-            $rawImg = trim(str_replace('\\', '/', (string)$rawImg));
-            if (strpos($rawImg, 'assets/') === 0 || strpos($rawImg, 'images/') === 0) {
-              $rawImg = '/' . $rawImg;
-            }
             $imgSrc = htmlspecialchars($rawImg, ENT_QUOTES, 'UTF-8');
             $imgSrcEncoded = str_replace(' ', '%20', $imgSrc);
             $title = htmlspecialchars($photo['title'] ?? 'Saha Fotoğrafı', ENT_QUOTES, 'UTF-8');
@@ -88,7 +84,9 @@ if (file_exists($sahaFile)) {
             </div>
             <div class="machine-card-body">
               <h3 class="machine-card-title"><?= $title ?></h3>
-              <p class="machine-card-meta"<?= $desc ? '' : ' style="visibility:hidden;"' ?>><?= $desc ? $desc : '&nbsp;' ?></p>
+              <?php if ($desc): ?>
+              <p class="machine-card-meta"><?= $desc ?></p>
+              <?php endif; ?>
             </div>
           </div>
           <?php endforeach; ?>

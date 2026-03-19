@@ -111,13 +111,9 @@ $pageId = 'makine-detay';
       }
       function safeImg(src) {
         if (!src || typeof src !== 'string') return '';
-        var trimmed = src.trim();
-        var t = trimmed.toLowerCase();
+        var t = src.trim().toLowerCase();
         if (t.indexOf('javascript:') === 0 || t.indexOf('data:') === 0 || t.indexOf('vbscript:') === 0) return '';
-        if ((t.indexOf('assets/') === 0 || t.indexOf('images/') === 0) && trimmed.charAt(0) !== '/') {
-          return '/' + trimmed;
-        }
-        return trimmed;
+        return src;
       }
       function renderMakine(makine) {
         if (!makine) {
@@ -184,7 +180,7 @@ $pageId = 'makine-detay';
       container.innerHTML = html;
       }
       
-      fetch('/api/makineler.php')
+      fetch('api/makineler.php')
         .then(function(r) { return r.json(); })
         .then(function(res) {
           var items = (res && res.success && res.items) ? res.items : [];

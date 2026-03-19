@@ -28,19 +28,13 @@
 
   function safeImgSrc(src) {
     if (!src || typeof src !== 'string') return '';
-    var trimmed = src.trim();
-    var t = trimmed.toLowerCase();
+    var t = src.trim().toLowerCase();
     if (t.indexOf('javascript:') === 0 || t.indexOf('data:') === 0 || t.indexOf('vbscript:') === 0) return '';
-    // API admin "img" değerleri genelde "assets/..."/"images/..." olarak saklıyor.
-    // Alt sayfalarda göreli yol bozulmasın diye '/' ile köke bağla.
-    if ((t.indexOf('assets/') === 0 || t.indexOf('images/') === 0) && trimmed.charAt(0) !== '/') {
-      return '/' + trimmed;
-    }
-    return trimmed;
+    return src;
   }
 
   function loadMachinesFromAPI() {
-    return fetch('/api/makineler.php')
+    return fetch('api/makineler.php')
       .then(function(r) { return r.json(); })
       .then(function(res) {
         if (!res.success || !Array.isArray(res.items)) return;
